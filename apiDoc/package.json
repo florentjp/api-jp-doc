@@ -1,14 +1,23 @@
 {
+  "config": {
+    "GIT_USER": "guilboM"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florentjp/api-jp-doc.git",
+    "directory": "apiDoc"
+  },
   "scripts": {
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
     "build": "docusaurus-build",
-    "publish-gh-pages": "docusaurus-publish",
+    "publish-gh-pages": "cross-env GIT_USER=$GIT_USER USE_SSH=true CURRENT_BRANCH=source docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version"
   },
   "devDependencies": {
+    "cross-env": "^6.0.3",
     "docusaurus": "^1.13.0"
   },
   "dependencies": {

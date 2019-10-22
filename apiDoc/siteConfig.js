@@ -10,7 +10,7 @@
 
 // List of projects/orgs using your project for the users page.
 const users = [
-  {
+/*  {
     caption: 'User1',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/image.jpg'.
@@ -18,20 +18,21 @@ const users = [
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
+  */
 ];
 
 const siteConfig = {
   title: 'Jepilote API Documentation', // Title for your website.
   tagline: "Documentation for Jepilote's API",
-  url: 'https://apiv2.jepilote.com/', // Your website URL
-  baseUrl: '/api/doc/', // Base URL for your project */
+  url: 'https://florentjp.github.io', // Your website URL
+  baseUrl: '/api-jp-doc/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
   projectName: 'api-jp-doc',
-  organizationName: 'jepilote',
+  organizationName: 'florentjp',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -105,7 +106,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: 'https://github.com/florentjp/api-jp-doc',
 };
 
 module.exports = siteConfig;

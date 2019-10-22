@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Export document · Jepilote API Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="| ENDPOINT               |"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Export document · Jepilote API Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://florentjp.github.io/api-jp-doc/"/><meta property="og:description" content="| ENDPOINT               |"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/api-jp-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/api-jp-doc/js/scrollSpy.js"></script><link rel="stylesheet" href="/api-jp-doc/css/main.css"/><script src="/api-jp-doc/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/api-jp-doc/"><img class="logo" src="/api-jp-doc/img/favicon.ico" alt="Jepilote API Documentation"/><h2 class="headerTitleWithLogo">Jepilote API Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/api-jp-doc/docs/authenticate" target="_self">Docs</a></li><li class=""><a href="https://apiv2.jepilote.com/" target="_self">API</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Export</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Authentification</h3><ul class=""><li class="navListItem"><a class="navItem" href="/api-jp-doc/docs/authenticate">Authentification</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Export</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/api-jp-doc/docs/export">Export document</a></li><li class="navListItem"><a class="navItem" href="/api-jp-doc/docs/get_export">Get export</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Companies</h3><ul class=""><li class="navListItem"><a class="navItem" href="/api-jp-doc/docs/companies">Companies</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Export document</h1></header><article><div><span><table>
+<thead>
+<tr><th>ENDPOINT</th></tr>
+</thead>
+<tbody>
+<tr><td>POST /export_documents</td></tr>
+</tbody>
+</table>
+<p>Permet de faire un export des documents concernés dans un fichier du format choisi.</p>
+<p>Il est nécessaire d'être <a href="authenticate">authentifié</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="parametres"></a><a href="#parametres" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parametres</h2>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"companyId"</span>: <span class="hljs-number">71</span>,
+    <span class="hljs-attr">"format"</span>: <span class="hljs-string">"ACD"</span>,
+    <span class="hljs-attr">"emailAddress"</span>: <span class="hljs-string">"megigayil@appmail24.com"</span>,
+    <span class="hljs-attr">"alreadyExported"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"flagAsExported"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"dateDebut"</span>: <span class="hljs-string">"2013-10-01"</span>,
+    <span class="hljs-attr">"dateFin"</span>: <span class="hljs-string">"2019-10-01"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="requis"></a><a href="#requis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requis</h3>
+<h4><a class="anchor" aria-hidden="true" id="companyid-int"></a><a href="#companyid-int" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>companyId <em>int</em></h4>
+<p>Identifiant de la société dont vous voulez récupérer un export.</p>
+<p>Vous pouvez récupérer la liste de vos sociétés (et leurs identifiants) avec <a href="companies">GET /companies</a></p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="format-string"></a><a href="#format-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>format <em>string</em></h4>
+<p>Vous avez le choix d'utiliser les valeurs &quot;FEC&quot; ou &quot;ACD&quot; pour respectivement faire un export dans un fichier '.fec' ou dans un fichier '.in'.</p>
+<p>Notez que si vous demandez un export &quot;ACD&quot;, une archive contenant votre fichier '.in' ainsi que la liste des documents comptables concernés sera créée.</p>
+<h3><a class="anchor" aria-hidden="true" id="optionnels"></a><a href="#optionnels" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optionnels</h3>
+<h4><a class="anchor" aria-hidden="true" id="emailaddress-string-email"></a><a href="#emailaddress-string-email" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>emailAddress <em>string (email)</em></h4>
+<p>Une adresse email valide, si elle est présente, un email contenant un lien de téléchargement vers le document d'export généré.</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="alreadyexported-int-bool"></a><a href="#alreadyexported-int-bool" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>alreadyExported <em>int</em> (<em>bool</em>)</h4>
+<p>Si la valeur est à 1, l'export sera effectué avec les documents qui ont déjà été exporté précédement.</p>
+<p>Si elle est à 0, seuls les documents qui n'ont pas encore été exporté seront concernés.</p>
+<p>Sera par défaut égale à 0 (false).</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="flagasexported-int-bool"></a><a href="#flagasexported-int-bool" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>flagAsExported <em>int</em> (<em>bool</em>)</h4>
+<p>Si la valeur est à 1, les documents concernés par l'export seront enregistrés comme déjà exporté.</p>
+<p>Par conséquent, il n'apparaitront plus pour les prochains appels vers cette requête avec 'alreadyExported' égal à 0.</p>
+<p>Sera par défaut égale à 0 (false).</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="datedebut-date"></a><a href="#datedebut-date" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dateDebut <em>date</em></h4>
+<p>Permet de choisir vos documents à exporter par rapport à leur date de création.</p>
+<p>Ne seront donc concernés que les documents créés après cette date.</p>
+<p>Sera par défaut égal à la date de création de votre premier document.</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="datefin-date"></a><a href="#datefin-date" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dateFin <em>date</em></h4>
+<p>Permet de choisir vos documents à exporter par rapport à leur date de création.</p>
+<p>Ne seront donc concernés que les documents créés avant cette date.</p>
+<p>Sera par défaut égal à la date d'aujourd'hui.</p>
+<h2><a class="anchor" aria-hidden="true" id="reponse"></a><a href="#reponse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reponse</h2>
+<p>Exemple</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"export ACD effectué"</span>,
+    <span class="hljs-attr">"error"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"file"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"tsuidyk"</span>,
+        <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://app.jepilote.com/download/show/hash/26b13e1c520b78fb72e9c9d2c3509cf4d046cb8468556fec876902ecde19ce14e3325f1891b684cfc86d4d48db3f158fd2fe"</span>,
+        <span class="hljs-attr">"api_url"</span>: <span class="hljs-string">"http://apiv2.jepilote.com/get_export/26b13e1c520b78fb72e9c9d2c3509cf4d046cb8468556fec876902ecde19ce14e3325f1891b684cfc86d4d48db3f158fd2fe"</span>
+    }
+}
+</code></pre>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="success-bool"></a><a href="#success-bool" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>success <em>bool</em></h4>
+<p>True si le fichier/dossier d'export à été généré, sinon false</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="message-string"></a><a href="#message-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>message <em>string</em></h4>
+<p>Un message expliquant le résultat de la requète</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="error-string"></a><a href="#error-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>error <em>string[]</em></h4>
+<p>Liste de message(s) d'erreur ayant survenue lors de l'export</p>
+<p>(ex: Un fichier .pdf lié à un document de l'export n'a pas été trouvé)</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="file-array"></a><a href="#file-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>file <em>array</em></h4>
+<p>Information sur le fichier/dossier d'export généré</p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="filename-string"></a><a href="#filename-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>file.name <em>string</em></h4>
+<p>Correspond au nom du document créé.</p>
+<p>Dans le cas d'un export ACD, le document créé est un .zip dont on a retiré l'extension.</p>
+<h4><a class="anchor" aria-hidden="true" id="fileurl-string-url"></a><a href="#fileurl-string-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>file.url <em>string (url)</em></h4>
+<p>Correspond à la page sur le site de Jepilote où vous pouvez télécharger le document généré.</p>
+<p>Il est nécessaire d'avoir une session en cours sur le site pour pouvoir accèder au lien.</p>
+<p>Cette url sera envoyé par email si vous en avez fourni un dans les paramètres de la requête, voir : <a href="#emailAddress-string-email">emailAddress</a></p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="fileapi_url-string-url"></a><a href="#fileapi_url-string-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>file.api_url <em>string (url)</em></h4>
+<p>Correspond au lien de téléchargement direct du document généré en utilisant l'API Jepilote.</p>
+<p>voir : <a href="get_export">GET /export_document/{hash}</a></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-10-22</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/api-jp-doc/docs/authenticate"><span class="arrow-prev">← </span><span>Authentification</span></a><a class="docs-next button" href="/api-jp-doc/docs/get_export"><span>Get export</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#parametres">Parametres</a><ul class="toc-headings"><li><a href="#requis">Requis</a></li><li><a href="#optionnels">Optionnels</a></li></ul></li><li><a href="#reponse">Reponse</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Jepilote</section></footer></div></body></html>

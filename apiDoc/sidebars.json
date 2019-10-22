@@ -1,0 +1,7 @@
+{
+  "docs": {
+    "Authentification": ["authenticate"],
+    "Export": ["export", "get_export"],
+    "Companies": ["companies"]
+  }
+}
